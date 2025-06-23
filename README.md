@@ -1,60 +1,46 @@
-# Teste Prático para Engenheiro de IA - Nível Júnior
+# Sistema de Cadastros
 
-## Contexto
-Uma academia de ginástica precisa de um sistema para monitorar a frequência dos alunos e prever possíveis desistências (churn). O sistema deve processar dados de entrada dos alunos na academia e gerar insights para a equipe de retenção.
+O projeto contém uma API constrída com FastAPI para realizar o cadastro dos alunos, tal como, registra a entrada e saída dos alunos.
 
-## Requisitos Técnicos
+* Criado em sistema Linux (Ubuntu)
 
-### Parte 1: API e Banco de Dados
-1. Criar uma API REST usando Flask ou FastAPI com os seguintes endpoints:
-   - `POST /aluno/registro`: Registrar um novo aluno
-   - `POST /aluno/checkin`: Registrar entrada do aluno na academia
-   - `GET /aluno/{id}/frequencia`: Obter histórico de frequência
-   - `GET /aluno/{id}/risco-churn`: Obter probabilidade de desistência
+# Pastas e Arquivos
 
-2. Implementar um banco de dados PostgreSQL com as seguintes tabelas:
-   - `alunos`: Informações básicas dos alunos
-   - `checkins`: Registro de entradas na academia
-   - `planos`: Tipos de planos disponíveis
+projeto_sistemaAcademia/
+├── database/        
+│   └── database.sql  # Script para criação do banco de dados e tabelas
+├── venv/             # Ambiente virtual
+├── data_database.py  # script que armazena as informações das credecniais para acessar o banco de dados
+├── database.py       # Script para conectar ao banco de dados
+├── exeAPI.sh         # Script para executar a API (Linux/macOS)
+├── exeAPI.bat        # Script para executar a API (Windows)
+├── main.py           # Código principal da API
+└── requirements.txt  # Bibliotecas e dependências do projeto 
 
-### Parte 2: Processamento Assíncrono
-1. Implementar um sistema de filas usando RabbitMQ para:
-   - Processar checkins em massa
-   - Gerar relatórios diários de frequência
-   - Atualizar o modelo de previsão de churn
+## Instalação e Inicialização
 
-### Parte 3: Modelo de IA para Previsão de Churn
-1. Desenvolver um modelo simples de machine learning para prever a probabilidade de um aluno cancelar a matrícula baseado em:
-   - Frequência semanal
-   - Tempo desde o último checkin
-   - Duração média das visitas
-   - Tipo de plano
+    Para baixar o repositório utilize o git clone (https://github.com/larifq/projeto_sistemaAcademia.git).
 
-## Entregáveis
-1. Código fonte completo no GitHub
-2. Documentação da API (Swagger ou similar)
-3. Script para inicialização do banco de dados
-4. Arquivo README com instruções de instalação e execução
-5. Notebook Jupyter demonstrando o treinamento do modelo de previsão de churn
+### Banco de Dados
+     1 - Instalar o banco de dados postgree (versão 17.5) 
+     2 - Instalar a aplicação desktop ou web para administrar o Banco de Dados 
+     3 - Em database.sql há o script para utilizar para criar o banco e as tabelas
+     4 - No arquivo data_database.py insira suas credencias (usuario e senha)
+     5 - Verificar se a porta que está utilizando é 5432. Se for outra porta, no arquivo database.py substitua a nova porta na variavel self.conecta_banco o código: `postgresql+psycopg2://{usuario}:{senha}@{hospedagem}:`**5432**`/{nome_db}`
+     
+### API - FastAPI
+    Para executar a API, você pode rodar diretamente o arquivo exeAPI.sh (em sistemas Linux/macOS) ou o arquivo exeAPI.bat (no Windows).
 
-## Critérios de Avaliação
-- Qualidade e organização do código
-- Funcionalidade da API
-- Implementação correta do sistema de filas
-- Performance e precisão do modelo de previsão
-- Documentação e facilidade de setup
+    Caso o script não funcione no Windows, remova a pasta venv e crie o ambiente virtual novamente utilizando o comando: python -m venv venv
 
-## Bônus (opcional)
-- Implementar cache com Redis para melhorar performance
-- Adicionar autenticação JWT na API
-- Containerizar a aplicação com Docker
-- Implementar testes unitários
+**Observação**: Para consultar as versões das bibliotecas usadas, consulte o arquivo requirements.txt, que pode ser usado para reinstalar as dependências.
 
-## Instruções de Entrega
-1. Faça um fork deste repositório
-2. Desenvolva a solução em seu fork
-3. Crie um Pull Request para este repositório com sua solução
-4. Envie um email para rh@pactosolucoes.com.br contendo:
-   - Seu currículo
-   - Link do Pull Request criado
-   - Informações de contato
+## Swagger
+    Para realizar o registro (POST) de alunos utilize: http://127.0.0.1:8000/docs#/default/registrar_aluno_alunos_registro_post
+    Para realizar o registro (POST) do checkin utilize: http://127.0.0.1:8000/docs#/default/registrar_checkin_aluno_checkin_post
+
+## Informações adicionais
+    O que falta no projeto:
+    1 - GET para informações de frequência e outro para probabilidade de abandono
+    2 - RabbitMQ
+    3 - Machine Learning
