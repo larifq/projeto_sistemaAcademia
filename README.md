@@ -6,16 +6,18 @@ O projeto contém uma API constrída com FastAPI para realizar o cadastro dos al
 
 # Pastas e Arquivos
 
+```bash
 projeto_sistemaAcademia/
-├── database/        
-│   └── database.sql  # Script para criação do banco de dados e tabelas
-├── venv/             # Ambiente virtual
-├── data_database.py  # script que armazena as informações das credecniais para acessar o banco de dados
-├── database.py       # Script para conectar ao banco de dados
-├── exeAPI.sh         # Script para executar a API (Linux/macOS)
-├── exeAPI.bat        # Script para executar a API (Windows)
-├── main.py           # Código principal da API
-└── requirements.txt  # Bibliotecas e dependências do projeto 
+├── database/
+│   └── database.sql                 # Script para criação do banco de dados e tabelas
+├── venv/                            # Ambiente virtual
+├── data_database.py                 # Script que armazena as informações das credenciais para acessar o banco de dados
+├── database.py                      # Script para conectar ao banco de dados
+├── exeAPI.sh                        # Script para executar uma API (Linux/macOS)
+├── exeAPI.bat                       # Script para executar uma API (Windows)
+├── main.py                          # Código principal da API
+└── requisitos.txt                   # Bibliotecas e dependências do projeto
+```
 
 ## Instalação e Inicialização
 
